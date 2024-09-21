@@ -8,4 +8,4 @@ inputs: {}
 outputs: {}
 runs:
   using: docker
-  image: "docker://docker.io/rosvik/oci-distribution-conformance-tests:v1.0-1e3935d"
+  image: "docker://docker.io/rosvik/oci-distribution-conformance-tests:v1.0"
