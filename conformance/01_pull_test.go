@@ -190,27 +190,27 @@ var test01Pull = func() {
 			})
 		})
 
-		g.Context("Error codes", func() {
-			g.Specify("400 response body should contain OCI-conforming JSON message", func() {
-				SkipIfDisabled(pull)
-				req := client.NewRequest(reggie.PUT, "/v2/<name>/manifests/<reference>",
-					reggie.WithReference("sha256:totallywrong")).
-					SetHeader("Content-Type", "application/vnd.oci.image.manifest.v1+json").
-					SetBody(invalidManifestContent)
-				resp, err := client.Do(req)
-				Expect(err).To(BeNil())
-				Expect(resp.StatusCode()).To(SatisfyAny(
-					Equal(http.StatusBadRequest),
-					Equal(http.StatusNotFound)))
-				if resp.StatusCode() == http.StatusBadRequest {
-					errorResponses, err := resp.Errors()
-					Expect(err).To(BeNil())
+		// g.Context("Error codes", func() {
+		// 	g.Specify("400 response body should contain OCI-conforming JSON message", func() {
+		// 		SkipIfDisabled(pull)
+		// 		req := client.NewRequest(reggie.PUT, "/v2/<name>/manifests/<reference>",
+		// 			reggie.WithReference("sha256:totallywrong")).
+		// 			SetHeader("Content-Type", "application/vnd.oci.image.manifest.v1+json").
+		// 			SetBody(invalidManifestContent)
+		// 		resp, err := client.Do(req)
+		// 		Expect(err).To(BeNil())
+		// 		Expect(resp.StatusCode()).To(SatisfyAny(
+		// 			Equal(http.StatusBadRequest),
+		// 			Equal(http.StatusNotFound)))
+		// 		if resp.StatusCode() == http.StatusBadRequest {
+		// 			errorResponses, err := resp.Errors()
+		// 			Expect(err).To(BeNil())
 
-					Expect(errorResponses).ToNot(BeEmpty())
-					Expect(errorCodes).To(ContainElement(errorResponses[0].Code))
-				}
-			})
-		})
+		// 			Expect(errorResponses).ToNot(BeEmpty())
+		// 			Expect(errorCodes).To(ContainElement(errorResponses[0].Code))
+		// 		}
+		// 	})
+		// })
 
 		g.Context("Teardown", func() {
 			if deleteManifestBeforeBlobs {

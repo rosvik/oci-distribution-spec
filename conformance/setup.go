@@ -265,7 +265,7 @@ func init() {
 		log.Fatal(err)
 	}
 
-	nonexistentManifest = ".INVALID_MANIFEST_NAME"
+	nonexistentManifest = "NON_EXISTENT_MANIFEST_NAME"
 	invalidManifestContent = []byte("blablabla")
 
 	testBlobA = []byte("NBA Jam on my NBA toast")
