@@ -1,5 +1,5 @@
 > [!NOTE]
-> This is a fork of the OCI Distribution Specification, with some modifications to the conformance tests. (v1.0)
+> This is a fork of the [OCI Distribution Specification](https://github.com/opencontainers/distribution-spec/), with some modifications to the conformance tests. (v1.0)
 > - Uses `nonexistentManifest=NON_EXISTENT_MANIFEST_NAME` instead of `.INVALID_MANIFEST_NAME` to check for 404 errors, since the latter breaks with the spec regex for manifest names.
 > - Removes the `400 response body should contain OCI-conforming JSON message` test, since it doesn't allow empty responses.
 
